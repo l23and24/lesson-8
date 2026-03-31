@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фізика 8: Навігація</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { font-style: normal !important; }
+        
+        /* Анімований фон */
+        body {
+            background: linear-gradient(-45deg, #f1f5f9, #e2e8f0, #dbeafe, #eff6ff);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.75rem;
+        }
+
+        /* Ефект скляної картки */
+        .lesson-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            aspect-ratio: 1 / 1;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .lesson-card:hover {
+            transform: scale(1.1) rotate(2deg);
+            background-color: white;
+            border-color: #3b82f6;
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.3);
+            z-index: 10;
+        }
+
+        .search-container {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body class="min-h-screen font-sans p-4 md:p-10">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="mb-10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <div>
+                <h1 class="text-4xl font-black text-slate-800 uppercase tracking-tighter">
+                    Фізика — <span class="text-blue-600">8 клас (НУШ)</span>
+                </h1>
+                <p class="text-[10px] text-slate-500 font-bold uppercase tracking-[0.3em] mt-1">Онлайн-кабінет фізики 229</p>
+            </div>
+            
+            <div class="search-container flex items-center px-4 py-2 rounded-2xl border border-white/50 shadow-inner">
+                <svg class="w-4 h-4 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Пошук №..." 
+                       class="bg-transparent border-none outline-none w-24 font-black text-blue-600 placeholder:text-slate-400">
+            </div>
+        </header>
+
+        <div id="lessonsContainer" class="lesson-grid">
+            <!-- Картки генеруються автоматично -->
+        </div>
+
+        <footer class="mt-16 text-center">
+            <!-- Футер порожній згідно з запитом -->
+        </footer>
+    </div>
+
+    <script>
+        const container = document.getElementById('lessonsContainer');
+        
+        // Генеруємо 105 уроків
+        for (let i = 1; i <= 105; i++) {
+            const card = document.createElement('a');
+            card.href = `${i}/index.html`; 
+            card.className = 'lesson-card rounded-2xl flex items-center justify-center shadow-sm';
+            card.setAttribute('data-id', i);
+            // Додаємо затримку анімації для ефекту "хвилі"
+            card.style.animationDelay = `${i * 0.01}s`;
+
+            card.innerHTML = `<span class="text-xl font-black text-slate-700">${i}</span>`;
+            container.appendChild(card);
+        }
+
+        // Пошук за номером
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const term = e.target.value;
+            document.querySelectorAll('.lesson-card').forEach(card => {
+                const id = card.getAttribute('data-id');
+                if (id === term || term === '') {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
