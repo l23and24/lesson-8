@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 79: Практикум з амперметрами та вольтметрами</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f1f5f9;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px; /* Оптимальна висота для вправ */
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            background: white;
+            margin-bottom: 2rem;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .section-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="pb-12">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-8 px-4 mb-8 shadow-lg text-center">
+        <h1 class="text-3xl font-bold">Урок №79</h1>
+        <p class="text-blue-100 mt-2 text-lg">Розв’язування задач. Практика роботи з амперметрами та вольтметрами</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4">
+        
+        <!-- Розділ 1 -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3">1</span>
+                Робота з приладами (Частина 1)
+            </h2>
+            <div class="iframe-container">
+                <iframe src="https://l23and24.github.io/mylessonplan-8_exercises/lesson-79/part-1.html"></iframe>
+            </div>
+        </section>
+
+        <!-- Розділ 2 -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3">2</span>
+                Робота з приладами (Частина 2)
+            </h2>
+            <div class="iframe-container">
+                <iframe src="https://l23and24.github.io/mylessonplan-8_exercises/lesson-79/part-2.html"></iframe>
+            </div>
+        </section>
+
+        <!-- Інтерактивні вправи -->
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-2 flex items-center">
+                <span class="bg-orange-500 text-white w-8 h-8 rounded-full flex items-center justify-center mr-3">3</span>
+                Інтерактивні вправи
+            </h2>
+            <p class="text-slate-600 mb-6 ml-11 italic">Впорядкування величини сили струму та напруги в порядку зростання/спадання</p>
+            
+            <div class="space-y-8">
+                <div class="iframe-container border-t-4 border-orange-400">
+                    <iframe src="https://l23and24.github.io/mylessonplan-8_exercises/lesson-79/part-3.html"></iframe>
+                </div>
+                
+                <div class="iframe-container border-t-4 border-orange-400">
+                    <iframe src="https://l23and24.github.io/mylessonplan-8_exercises/lesson-79/part-4.html"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Домашня робота -->
+        <section class="section-card bg-yellow-50 border-yellow-400 shadow-sm">
+            <h2 class="text-xl font-bold text-yellow-800 mb-2 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+                Домашня робота
+            </h2>
+            <p class="text-yellow-900 text-lg">Повторити матеріали параграфів <strong>§ 35-36</strong>.</p>
+        </section>
+
+    </main>
+
+    <footer class="text-center text-slate-400 text-sm mt-8">
+        Онлайн-кабінет фізики 229
+    </footer>
+
+</body>
+</html>
