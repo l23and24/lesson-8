@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 81: Електричний опір. Закон Ома</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .smart-board-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 1rem;
+            background: white;
+            transition: transform 0.2s;
+        }
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+        }
+        .btn-action:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .formula-box {
+            background-color: #eff6ff;
+            border-left: 5px solid #2563eb;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        .question-icon {
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        h1, h2 {
+            color: #1e3a8a;
+        }
+        section {
+            margin-bottom: 2.5rem;
+        }
+        .mjx-chtml {
+            font-size: 110% !important;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="max-w-4xl mx-auto text-center mb-10">
+        <h1 class="text-3xl md:text-5xl font-bold mb-2">Урок № 81</h1>
+        <h2 class="text-2xl md:text-3xl font-semibold opacity-80">Електричний опір. Закон Ома</h2>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        
+        <!-- Перевірка домашнього завдання -->
+        <section class="smart-board-card p-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">📝</span> Перевірка домашнього завдання
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://l23and24.github.io/textbook-8_exercises/36.3.html" target="_blank" class="btn-action">
+                    Вправа № 36 (3)
+                </a>
+                <a href="https://l23and24.github.io/textbook-8_exercises/36.4.html" target="_blank" class="btn-action">
+                    Вправа № 36 (4)
+                </a>
+            </div>
+        </section>
+
+        <!-- Пояснення матеріалу -->
+        <section class="mt-8">
+            <h3 class="text-2xl font-bold mb-6 border-b-2 border-blue-200 pb-2">Пояснення навчального матеріалу</h3>
+            
+            <div class="smart-board-card p-6 mb-6">
+                <p class="text-xl font-semibold text-blue-700 mb-4 flex items-start">
+                    <span class="question-icon">🤔</span> Чи впливають параметри провідника на рух заряджених частинок?
+                </p>
+                <div class="text-lg leading-relaxed space-y-4">
+                    <p>
+                        Ви вже знаєте, що носіями струму в металах є вільні електрони. Під дією електричного поля вони починають рухатися напрямлено. Але на своєму шляху електрони постійно наштовхуються на позитивні йони, які утворюють кристалічну ґратку металу.
+                    </p>
+                    <p>
+                        У результаті цих зіткнень упорядкований рух електронів сповільнюється. Чим інтенсивніша взаємодія між електронами і йонами, тим складніше проходити струму.
+                    </p>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 font-medium italic">
+                        Електричний опір — це фізична величина, яка характеризує властивість провідника протидіяти проходженню електричного струму.
+                    </div>
+                </div>
+            </div>
+
+            <div class="smart-board-card p-6 mb-6">
+                <h4 class="font-bold text-lg mb-2 text-gray-700 uppercase tracking-wide">Одиниця опору в СІ</h4>
+                <div class="formula-box">
+                    \[ [R] = 1 \text{ Ом} \]
+                </div>
+                <p class="text-md text-gray-600 mb-4 italic text-center">Названа на честь німецького вченого Георга Сімона Ома (1787–1854)</p>
+                <div class="bg-blue-50 p-4 rounded-lg text-lg text-center">
+                    <strong>1 Ом</strong> — це опір такого провідника, в якому за напруги на кінцях <strong>1 В</strong> сила струму дорівнює <strong>1 А</strong>.
+                    <div class="text-2xl mt-4">
+                        \[ 1 \text{ Ом} = \frac{1 \text{ В}}{1 \text{ А}} \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="smart-board-card p-6">
+                <p class="text-xl font-semibold text-blue-700 mb-4 flex items-start">
+                    <span class="question-icon">🤔</span> Чи взаємопов’язані між собою сила струму, напруга та опір?
+                </p>
+                <p class="text-lg mb-4">
+                    У 1826 році Георг Ом експериментально встановив залежність, яку назвали <strong>Законом Ома</strong>:
+                </p>
+                <div class="bg-gray-800 text-white p-6 rounded-xl text-center mb-4">
+                    <p class="text-xl mb-4">Сила струму в ділянці кола прямо пропорційна напрузі на кінцях ділянки та обернено пропорційна опору цієї ділянки.</p>
+                    <div class="text-4xl font-mono text-blue-300">
+                        \[ I = \frac{U}{R} \]
+                    </div>
+                </div>
+                <ul class="grid grid-cols-1 md:grid-cols-3 gap-2 text-center text-lg">
+                    <li class="p-2 bg-gray-100 rounded">\( I \) — сила струму</li>
+                    <li class="p-2 bg-gray-100 rounded">\( U \) — електрична напруга</li>
+                    <li class="p-2 bg-gray-100 rounded">\( R \) — електричний опір</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Розв’язування задач -->
+        <section class="smart-board-card p-6">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">✏️</span> Розв’язування задач
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-81/part-1.html" target="_blank" class="btn-action bg-green-600 hover:bg-green-700">
+                    Задача № 81.1
+                </a>
+                <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-81/part-2.html" target="_blank" class="btn-action bg-green-600 hover:bg-green-700">
+                    Задача № 81.2
+                </a>
+            </div>
+        </section>
+
+        <!-- Підсумки -->
+        <section class="smart-board-card p-6 border-t-4 border-blue-500">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <span class="mr-2">🏁</span> Підсумки уроку
+            </h3>
+            <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-81/part-3.html" target="_blank" class="btn-action w-full bg-orange-500 hover:bg-orange-600">
+                Перевірка знань № 81.3
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 pb-8 text-gray-400 text-sm italic">
+        Онлайн кабінет фізики 229
+    </footer>
+
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']]
+          }
+        };
+    </script>
+</body>
+</html>
