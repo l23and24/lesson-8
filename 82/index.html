@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 81: Розрахунок опору провідника</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2rem;
+            padding: 2rem;
+        }
+        .formula-container {
+            background: #e0f2fe;
+            padding: 1.5rem 2.5rem;
+            border-radius: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #0369a1;
+            font-size: 2.5rem;
+            font-family: "Times New Roman", serif;
+        }
+        .unit-bracket {
+            color: #0369a1;
+            margin-left: 0.5rem;
+        }
+        .btn-link {
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 4rem;
+            padding: 1rem 1.5rem;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0.5rem 0;
+            box-shadow: 0 4px 0 #1e40af;
+        }
+        .btn-link:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+        .btn-link:hover {
+            background-color: #1d4ed8;
+        }
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        h2 {
+            border-left: 5px solid #2563eb;
+            padding-left: 1rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+        .question-box {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+        /* Оновлена легенда: символи як MathJax, текст як HTML для уникнення накладання */
+        .formula-legend {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem 2.5rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            text-align: left;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.4rem;
+            color: #1e293b;
+        }
+        .legend-symbol {
+            min-width: 2.5rem;
+            display: flex;
+            justify-content: center;
+        }
+        .legend-text {
+            margin-left: 0.75rem;
+            color: #475569;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="max-w-4xl mx-auto text-center mb-10">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-2">Урок 81. Розрахунок опору провідника. Питомий опір</h1>
+        <div class="h-1 w-32 bg-blue-600 mx-auto"></div>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        
+        <!-- Перевірка домашнього завдання -->
+        <section class="lesson-card">
+            <h2>Перевірка домашнього завдання</h2>
+            <div class="btn-container">
+                <a href="https://l23and24.github.io/textbook-8_exercises/37.2.html" target="_blank" class="btn-link">
+                    Вправа № 37 (2)
+                </a>
+                <a href="https://l23and24.github.io/textbook-8_exercises/37.4.html" target="_blank" class="btn-link">
+                    Вправа № 37 (4)
+                </a>
+            </div>
+        </section>
+
+        <!-- Актуалізація опорних знань -->
+        <section class="lesson-card">
+            <h2>Актуалізація опорних знань</h2>
+            <div class="question-box text-xl">
+                🤔 Чи впливають параметри провідника на рух заряджених частинок?
+            </div>
+            <div class="space-y-4 text-lg leading-relaxed text-gray-700">
+                <p>Носіями струму в металах є вільні електрони. Під дією електричного поля вони починають рухатися напрямлено. Але на своєму шляху електрони постійно наштовхуються на позитивні йони, які утворюють кристалічну ґратку металу й коливаються навколо положень рівноваги.</p>
+                <p>У результаті цих зіткнень упорядкований рух електронів сповільнюється, і кількість електронів, що проходять за одиницю часу через поперечний переріз провідника, зменшується.</p>
+                <p class="font-semibold text-blue-800">Електричний опір – це фізична величина, яка характеризує властивість провідника протидіяти проходженню електричного струму.</p>
+                <div class="text-center py-4">
+                    <div class="formula-container">
+                        <span>$R =$</span>
+                        <span class="unit-bracket"> [Ом]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Пояснення навчального матеріалу -->
+        <section class="lesson-card">
+            <h2>Пояснення навчального матеріалу</h2>
+            <div class="question-box text-xl">
+                🤔 Від чого залежить опір провідника?
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div class="space-y-4">
+                    <p class="text-lg">1. <strong>Матеріал:</strong> Опір провідника залежить від речовини.</p>
+                    <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-82/part-5.html" target="_blank" class="btn-link">
+                        Дослід 82.1 (Матеріал)
+                    </a>
+                    
+                    <p class="text-lg">2. <strong>Довжина:</strong> Прямо пропорційний довжині.</p>
+                    <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-82/part-3.html" target="_blank" class="btn-link">
+                        Дослід 82.2 (Довжина)
+                    </a>
+                    <div class="text-2xl font-serif text-blue-700">$R \sim l$</div>
+                </div>
+                
+                <div class="space-y-4">
+                    <p class="text-lg">3. <strong>Площа:</strong> Обернено пропорційний площі перерізу.</p>
+                    <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-82/part-4.html" target="_blank" class="btn-link">
+                        Дослід 82.3 (Переріз)
+                    </a>
+                    <div class="text-2xl font-serif text-blue-700">$R \sim \frac{1}{S}$</div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <p class="text-xl mb-4 font-bold text-gray-800">Загальна формула:</p>
+                <div class="formula-container text-5xl py-8 px-12 mb-6">
+                    $R = \rho \frac{l}{S}$
+                </div>
+                
+                <!-- Легенда з розділенням MathJax та тексту для уникнення артефактів -->
+                <div class="formula-legend">
+                    <div class="legend-item">
+                        <span class="legend-symbol">$R$</span>
+                        <span class="legend-text">— опір</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-symbol">$l$</span>
+                        <span class="legend-text">— довжина</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-symbol">$S$</span>
+                        <span class="legend-text">— площа</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-symbol">$\rho$</span>
+                        <span class="legend-text">— питомий опір</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Розв’язування задач -->
+        <section class="lesson-card">
+            <h2>Розв’язування задач</h2>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-82/part-1.html" target="_blank" class="btn-link">
+                    Тренажер №82.1
+                </a>
+                <a href="https://l23and24.github.io/mylessonplan-8_exercises/lesson-82/part-2.html" target="_blank" class="btn-link">
+                    Тренажер №82.2
+                </a>
+            </div>
+        </section>
+
+        <!-- Підсумки уроку -->
+        <section class="lesson-card bg-blue-50">
+            <h2 class="border-blue-800">Підсумки уроку</h2>
+            <div class="bg-white p-6 rounded-lg border border-blue-200">
+                <h3 class="font-bold text-xl text-blue-900 mb-2">Домашнє завдання:</h3>
+                <ul class="list-disc list-inside space-y-2 text-lg">
+                    <li>Опрацювати § 38 (п. 1-2)</li>
+                    <li>Контрольні запитання 1-3 (с. 233)</li>
+                    <li>Вправа № 38 (2, 6)</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center text-gray-500 my-8">
+        &copy; 😉 Онлайн-кабінет 229
+    </footer>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</body>
+</html>
